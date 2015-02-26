@@ -181,7 +181,7 @@ Queries returning more documents than fit in a batch, maintain a cursor on the s
 
 | name                 | short name   | example                                  | description                       |
 |----------------------|--------------|------------------------------------------|-----------------------------------|
-| `query`              | `q`          | `{ "key": { "nested": "value" } }`       | JSON object that represents the query, <br>including all subfields. The `{ query : … }` <br>or `{ $query :  … }` wrapper (if present) <br>should not be included. <br><br>Optional. |                   
+| `query`              | `q`          | `{ "key": { "nested": "value" } }`       | JSON object that represents the query, including all subfields. The `{ query : … }` or `{ $query :  … }` wrapper (if present) should not be included. <br><br>Optional. |                   
 | `namespace`          | `ns`         | `test.mycoll`                            | namespace in dot-notation         |
 | `duration`           | `dur`         | `6513`                                  | numeric value in ms               |
 
@@ -201,7 +201,7 @@ Updates have a `query` member and additionally an update member.
 
 | name                 | short name   | example                                  | description                       |
 |----------------------|--------------|------------------------------------------|-----------------------------------|
-| `update`             | `u`          | `{ "$set" { "foo" : "bar" } }`           | JSON object that represents the update,<br>including a potential operator at the start (here: `$set`).<br><br>Optional. |
+| `update`             | `u`          | `{ "$set" { "foo" : "bar" } }`           | JSON object that represents the update, including a potential operator at the start (here: `$set`).<br><br>Optional. |
 
 
 ##### Remove
@@ -328,7 +328,7 @@ Each object that contains a query should also contain a query_shape.
 
 | name                 | short name   | example                                  | description                       |
 |----------------------|--------------|------------------------------------------|-----------------------------------|
-| `query_shape`        | `qs`         | `{"bar": 1, "foo": {"$gt": 1}}`   | Every object that has a `query`<br>should also have a `query_shape`.<br><br>Optional. |
+| `query_shape`        | `qs`         | `{"bar": 1, "foo": {"$gt": 1}}`   | Every object that has a `query` should also have a `query_shape`.<br><br>Optional. |
 
 
 ### Connections vs. Context
@@ -399,7 +399,7 @@ The `version` field should follow [semver 2.0](http://semver.org/spec/v2.0.0.htm
 | `version`           | `0.3.5`                                  | Semantic Versioning compatibility rules apply |
 | `options`           | `{ "name_format": "short" }`             | See Options below                 |
 | `delta`             | `{ "unsupported": ["connection"] }`      | See Deviations below              |
-| `comment`           | `Can use both "short" and "long" name format.` | Free text comment, that can be used to verbally<br>explain certain choices, limitations or other useful<br>information to the users of the implementation.<br><br>Optional |
+| `comment`           | `Can use both "short" and "long" name format.` | Free text comment, that can be used to verbally explain certain choices, limitations or other useful information to the users of the implementation.<br><br>Optional |
 
 
 ### Options
@@ -424,9 +424,9 @@ The `delta` member can have the following sub-fields:
 
 | name                | example                                  | description                       |
 |---------------------|------------------------------------------|-----------------------------------|
-| `unsupported`       | `["query_shape", "sort_shape"]`          | JSON array of names not supported by<br>this implementation. Naming should follow<br>the `name_format` option. If not present,<br>it is assumed that all names are supported. |
-| `substitutions`     | `{ "ts": "t" }`                          | JSON object, mapping names from this schema<br>to alternative names that the implementation<br>supports instead. Naming should follow the<br>`name_format` option. If not present, it is assumed<br>that all fields are supported in exactly the way the<br>schema dictates. |
-| `additions`           | `{ "db": "separate database name",`<br>`"coll": "separate collection name" }` | JSON object, mapping additional names not<br>included in the schema to strings describing<br>the member's purpose. |
+| `unsupported`       | `["query_shape", "sort_shape"]`          | JSON array of names not supported by this implementation. Naming should follow the `name_format` option. If not present, it is assumed that all names are supported. |
+| `substitutions`     | `{ "ts": "t" }`                          | JSON object, mapping names from this spec to alternative names that the implementation supports instead. Naming should follow the `name_format` option. If not present, it is assumed that all fields are supported in exactly the way the spec dictates. |
+| `additions`           | `{ "db": "separate database name", "coll": "separate collection name" }` | JSON object, mapping additional names not included in the spec to strings describing the member's purpose. |
 
 
 
