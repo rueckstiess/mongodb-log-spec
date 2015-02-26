@@ -3,7 +3,7 @@
 
 This document is a specification **draft** for parsing and processing MongoDB server logs. The goal is to have a unified schema that various tools can implement and understand.
 
-This document assumes the latest MongoDB version (currently 2.8.0-rc11) unless stated otherwise. 
+This document assumes the latest MongoDB version (currently 3.0.0-rc11) unless stated otherwise. 
 
 ## General Information about this document
 
