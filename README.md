@@ -1,4 +1,4 @@
-# MongoDB Log Parsing
+# MongoDB Log Parsing Spec
 #### Version 0.3.0
 
 This document is a specification **draft** for parsing and processing MongoDB server logs. The goal is to have a unified schema that various tools can implement and understand.
@@ -225,7 +225,7 @@ command <database>.$cmd command: <command document> ...
 | name                 | short name   | example                                  | description                       |
 |----------------------|--------------|------------------------------------------|-----------------------------------|
 | `command`            | `c`          | `replSetGetStatus`                       | Name of the command. For 2.4 and below, the name has to be extracted from the `command_doc` as first key.<br><br>Optional.   |
-| `command_doc`        | `cd`         | `{ count: 1, query: { foo: "bar" } }`    | JSON object that represents the command.<br><br>Optional. |
+| `command_doc`        | `cd`         | `{ "count": 1, "query": { "foo": "bar" } }`    | JSON object that represents the command.<br><br>Optional. |
 
 
 ##### Counters
@@ -273,7 +273,7 @@ Log lines belong to log files, which belong to servers, which possibly belong to
 
 | name                 | short name   | example                                  | description                       |
 |----------------------|--------------|------------------------------------------|-----------------------------------|
-| `source_id`          | `sid`        | `ObjectId("54eeb00f80f13e27653feafa")`   | unambiguous identifier linking all log events from the same source together. |
+| `source_id`          | `sid`        | `{ "$oid": "54eeb00f80f13e27653feafa" }`   | unambiguous identifier linking all log events from the same source together. |
 
 
 ## Special Cases
@@ -371,7 +371,7 @@ Example support document:
 
 ```
 {
-  "id": "MongoDB Logging Spec",
+  "id": "MongoDB Log Parsing Spec",
   "location": "https://github.com/rueckstiess/mongodb-log-spec",
   "version": "0.3.0",
   "comment": "shape information not extracted due to lack of standard.",
@@ -395,7 +395,7 @@ The `version` field should follow [semver 2.0](http://semver.org/spec/v2.0.0.htm
 
 | name                | example                                  | description                       |
 |---------------------|------------------------------------------|-----------------------------------|
-| `id`                | `MongoDB Logging Spec`                   | Always use this value.            |
+| `id`                | `MongoDB Log Parsing Spec`                   | Always use this value.            |
 | `version`           | `0.3.5`                                  | Semantic Versioning compatibility rules apply |
 | `options`           | `{ "name_format": "short" }`             | See Options below                 |
 | `delta`             | `{ "unsupported": ["connection"] }`      | See Deviations below              |
