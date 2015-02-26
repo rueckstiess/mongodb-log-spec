@@ -230,7 +230,7 @@ command <database>.$cmd command: <command document> ...
 
 ##### Counters
 
-Following the operation-specific information, MongoDB logs certain counters as key/value pairs. All counters that follow the format <name>:<value> should be extracted. One exception is `numYields`. Before version 2.6, it had an extra space after the colon. Both versions must be supported.
+Following the operation-specific information, MongoDB logs certain counters as key/value pairs. All counters that follow the format `<name>:<value>` should be extracted. One exception is `numYields`. Before version 2.6, it had an extra space after the colon. Both versions must be supported.
 
 All counters are optional. 
 
